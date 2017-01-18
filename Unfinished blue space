@@ -1,0 +1,96 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width">
+  <script src="https://aframe.io/releases/0.3.0/aframe.min.js"></script>
+  <script src="https://cdn.rawgit.com/AltspaceVR/aframe-altspace-component/v1.3.1/dist/aframe-altspace-component.min.js"></script>
+  <script>
+    AFRAME.registerComponent('altspace-look-at', {
+      init: function () {
+        if (!window.altspace || !altspace.inClient) { return; }
+        altspace.getThreeJSTrackingSkeleton().then(function (skeleton) {
+          this.head = skeleton.getJoint('Head')
+        }.bind(this))
+      },
+      tick: function () {
+        if (!this.head || !this.el.object3D) { return; }
+        this.el.object3D.lookAt(this.head.position); 
+      }
+    })
+  </script>
+</head>
+
+<body>
+  <a-scene altspace="fullspace:true">
+    <!--sky-->
+    <a-sky radius="800" src="http://i.imgur.com/RWFCUaY.jpg"></a-sky>
+    <!--ground-->
+    <a-circle src="http://i.imgur.com/H4sYxIo.jpg" radius="3" position="0 0.1 0" rotation="-90 0 0" altspace-cursor-collider="enabled: false"></a-circle>
+    <!--spawn base-->
+    <a-cylinder src="http://i.imgur.com/nynXCp0.jpg" height="3" radius="3" position="0 1.50 0" side="double" altspace-cursor-collider="enabled: false"></a-cylinder>
+    <!--altspace sphere-->
+    <a-sphere src="http://i.imgur.com/GUbEjF5.jpg" radius="0.5" position="0 2.10 -1">
+      <a-animation attribute="rotation" dur="10000.5" fill="forwards" to="0 360 0" repeat="indefinite" easing="linear">
+      </a-animation>
+    </a-sphere>
+    <!--platform-->
+    <a-box src="http://i.imgur.com/a4cAIhj.jpg" rotation="-90 0 0" width="2" height="2" depth="0.1" position="0 1 -9" n-mesh-collider="enabled: true; type: environment">
+      <a-animation attribute="position" direction='alternate' from='0 1 -9' to='0 11 -9' ease-in-out='linear' dur='11000' repeat='indefinite' />
+    </a-box>
+    <!--second floor-->
+    <a-box src="http://i.imgur.com/rXw5hPj.jpg" rotation="-90 0 0" width="20" height="20" depth="0.1" position="0 11 -20" n-mesh-collider="enabled: true; type: environment"> </a-box>
+    <!--ball-->
+    <a-sphere src="http://i.imgur.com/sOuJ8Qf.jpg" radius="0.5" position="-5 3 -6">
+      <a-animation attribute="rotation" dur="10000.5" fill="forwards" to="0 360 0" repeat="indefinite" easing="linear">
+      </a-animation>
+    </a-sphere>
+    <!--hoops-->
+    <a-entity n-object='res: objects/hoop' position="-15 1 2">
+      <a-animation attribute="position" direction='alternate' from='-15 1 2' to='-15 3 2' ease-in-out='linear' dur='1800' repeat='indefinite' /></a-entity>
+    <a-entity n-object='res: objects/hoop' position="-16 1 0">
+      <a-animation attribute="position" direction='alternate' from='-16 1 0' to='-16 3 0' ease-in-out='linear' dur='1600' repeat='indefinite' /></a-entity>
+    <a-entity n-object='res: objects/hoop' position="-17 1 -2">
+      <a-animation attribute="position" direction='alternate' from='-17 1 -2' to='-17 3 -2' ease-in-out='linear' dur='1400' repeat='indefinite' /></a-entity>
+    <a-entity n-object='res: objects/hoop' position="-18 1 -4">
+      <a-animation attribute="position" direction='alternate' from='-18 1 -4' to='-18 3 -4' ease-in-out='linear' dur='1200' repeat='indefinite' /></a-entity>
+    <!--ball-->
+    <a-entity n-spawner='res: interactables/gem' position="-14 1 2"></a-entity>
+    <a-entity n-spawner='res: interactables/basketball' position="-14 1 0"></a-entity>
+    <a-entity n-spawner='res: interactables/soccerball' position="-14 1 -2"></a-entity>
+    <a-entity n-spawner='res: interactables/bowling-pin' position="-14 1 -4"></a-entity>
+    <!--sphere-->
+    <a-sphere src="http://i.imgur.com/uezJGWW.jpg" radius="2.20" position="0 20 -23" side="double">
+      <a-animation attribute="rotation" dur="12000" fill="forwards" to="0 360 0" repeat="indefinite" easing="linear"></a-animation>
+    </a-sphere>
+    <!--ring-->
+    <a-torus color="#2B314D" arc="360" radius="3" radius-tubular="0.1" position="0 20 -23">
+      <a-animation attribute="rotation" dur="12000" fill="forwards" to="0 360 0" repeat="indefinite" easing="linear"></a-animation>
+    </a-torus>
+    <a-torus color="#2B314D" arc="360" radius="3" radius-tubular="0.1" position="0 20 -23" rotation="0 90 0">
+      <a-animation attribute="rotation" dur="12000" fill="forwards" to="360 90 0" repeat="indefinite" easing="linear"></a-animation>
+    </a-torus>
+    <!--afcspot-->
+    <a-box src="http://i.imgur.com/ATrf4iq.jpg" rotation="-90 0 0" width="15" height="15" depth="0.1" position="23 20 -20" n-mesh-collider="enabled: true; type: environment"> </a-box>
+    <!--lift to afc hotspot-->
+    <a-box src="http://i.imgur.com/a4cAIhj.jpg" rotation="-90 0 0" width="2" height="2" depth="0.1" position="23 1 -11.50" n-mesh-collider="enabled: true; type: environment">
+      <a-animation attribute="position" direction='alternate' from='23 1 -11.50' to='23 20 -11.50' ease-in-out='linear' dur='11000' repeat='indefinite' />
+    </a-box>
+    <!--sign-->
+    <a-image src="http://i.imgur.com/IzuO7Ny.jpg" hight="1" width="1" position="0 1.50 -10" side="front"></a-image>
+      <a-image src="http://i.imgur.com/IzuO7Ny.jpg" hight="1" width="1" position="23 1 -12" side="front"></a-image>
+        <!--image sphere-->
+        <a-sphere src="http://i.imgur.com/d3Qgx8f.jpg" radius="10" side="back" position="50 0.10 25"></a-sphere>
+        <!--watchtower-->
+        <a-sphere src="http://i.imgur.com/H4sYxIo.jpg" radius="5" side="front" position="0 26 16" altspace-cursor-collider="enabled: false"></a-sphere>
+        <!--watch lift-->
+        <a-box src="http://i.imgur.com/a4cAIhj.jpg" rotation="-90 0 0" width="2" height="2" depth="0.1" position="0 0 11.40" n-mesh-collider="enabled: true; type: environment">
+          <a-animation attribute="position" direction='alternate' from='0 0 11.40' to='0 25 11.40' ease-in-out='linear' dur='12000' repeat='indefinite' />
+        </a-box>
+        <!--watchtower ground-->
+        <a-box src="http://i.imgur.com/H4sYxIo.jpg" depth="0.1" width="7" height="7" position="0 25 16" rotation="-90 0 0" n-mesh-collider="enabled: true; type: environment"></a-box>
+        <!--dico dimond-->
+        <a-octahedron src="http://i.imgur.com/G0BAeaV.jpg" radius="5" position="24 30 -20">
+          <a-animation attribute="rotation" dur="15000" fill="forwards" to="0 360 0" repeat="indefinite" easing="linear"></a-animation>
+        </a-octahedron>
