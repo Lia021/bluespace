@@ -29,9 +29,12 @@
       <a-mixin id="optimizedSphere" geometry="primitive: sphere; segments-width: 16; segments-height: 16;"></a-mixin>
       <a-mixin id="optimizedCylinder" geometry="primitive: cylinder; segments-radial: 16; segments-height: 1;"></a-mixin>
       <a-mixin id="optimizedCircle" geometry="primitive: circle; segments: 16;"></a-mixin>
+      <a-mixin id="optimizedTorus" 
+        geometry="primitive: torus; segments-tubular: 32; segments-radial: 8; radius: 3; radius-tubular: 0.1;"
+        material="color: #2B314D"></a-mixin>
     </a-assets>
     <!--sky-->
-    <a-sky radius="800" src="images/RWFCUaY.jpg"></a-sky>
+    <a-sky radius="800" src="images/RWFCUaY.jpg" segments-width="16" segments-height="16"></a-sky>
     <!--ground-->
     <a-entity mixin="optimizedCircle" material="src: url(images/GDUulsH.jpg); color: rgb(50, 50, 130);" scale="3.3 3.3 3.3" position="0 0.1 0" rotation="-90 0 0" altspace-cursor-collider="enabled: false"></a-entity>
     <!--spawn base-->
@@ -71,12 +74,12 @@
       <a-animation attribute="rotation" dur="12000" fill="forwards" to="0 360 0" repeat="indefinite" easing="linear"></a-animation>
     </a-entity>
     <!--ring-->
-    <a-torus color="#2B314D" arc="360" radius="3" radius-tubular="0.1" position="0 20 -23">
+    <a-entity mixin="optimizedTorus" position="0 20 -23">
       <a-animation attribute="rotation" dur="12000" fill="forwards" to="0 360 0" repeat="indefinite" easing="linear"></a-animation>
-    </a-torus>
-    <a-torus color="#2B314D" arc="360" radius="3" radius-tubular="0.1" position="0 20 -23" rotation="0 90 0">
+    </a-entity>
+    <a-entity mixin="optimizedTorus" position="0 20 -23" rotation="0 90 0">
       <a-animation attribute="rotation" dur="12000" fill="forwards" to="360 90 0" repeat="indefinite" easing="linear"></a-animation>
-    </a-torus>
+    </a-entity>
     <!--afcspot-->
     <a-box src="images/ATrf4iq.jpg" rotation="-90 0 0" width="15" height="15" depth="0.1" position="23 20 -20" n-mesh-collider="enabled: true; type: environment"> </a-box>
     <!--lift to afc hotspot-->
