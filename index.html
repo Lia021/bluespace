@@ -26,16 +26,18 @@
 <body>
   <a-scene altspace="fullspace:true">
     <a-assets>
-      <a-mixin id="sphere" geometry="primitive: sphere; segments-width: 16; segments-height: 16;"></a-mixin>
+      <a-mixin id="optimizedSphere" geometry="primitive: sphere; segments-width: 16; segments-height: 16;"></a-mixin>
+      <a-mixin id="optimizedCylinder" geometry="primitive: cylinder; segments-radial: 16; segments-height: 1;"></a-mixin>
+      <a-mixin id="optimizedCircle" geometry="primitive: circle; segments: 16;"></a-mixin>
     </a-assets>
     <!--sky-->
     <a-sky radius="800" src="images/RWFCUaY.jpg"></a-sky>
     <!--ground-->
-    <a-circle src="images/GDUulsH.jpg" color="rgb(50, 50, 130)" radius="3" position="0 0.1 0" rotation="-90 0 0" altspace-cursor-collider="enabled: false"></a-circle>
+    <a-entity mixin="optimizedCircle" material="src: url(images/GDUulsH.jpg); color: rgb(50, 50, 130);" scale="3.3 3.3 3.3" position="0 0.1 0" rotation="-90 0 0" altspace-cursor-collider="enabled: false"></a-entity>
     <!--spawn base-->
-    <a-cylinder src="images/nynXCp0.jpg" height="3" radius="3" position="0 1.50 0" side="double" altspace-cursor-collider="enabled: false"></a-cylinder>
+    <a-entity mixin="optimizedCylinder" material="src: url(images/nynXCp0.jpg); side: double;" scale="3.3 3 3.3" position="0 1.50 0" altspace-cursor-collider="enabled: false"></a-entity>
     <!--altspace sphere-->
-    <a-entity mixin="sphere" material="src: url(images/GUbEjF5.jpg)" scale="0.5 0.5 0.5" position="0 2.10 -1">
+    <a-entity mixin="optimizedSphere" material="src: url(images/GUbEjF5.jpg)" scale="0.5 0.5 0.5" position="0 2.10 -1">
       <a-animation attribute="rotation" dur="10000.5" fill="forwards" to="0 360 0" repeat="indefinite" easing="linear">
       </a-animation>
     </a-entity>
@@ -46,7 +48,7 @@
     <!--second floor-->
     <a-box src="images/rXw5hPj.jpg" rotation="-90 0 0" width="20" height="20" depth="0.1" position="0 11 -20" n-mesh-collider="enabled: true; type: environment"> </a-box>
     <!--ball-->
-    <a-entity mixin="sphere" material="src: url(images/sOuJ8Qf.jpg)" scale="0.5 0.5 0.5" position="-5 3 -6">
+    <a-entity mixin="optimizedSphere" material="src: url(images/sOuJ8Qf.jpg)" scale="0.5 0.5 0.5" position="-5 3 -6">
       <a-animation attribute="rotation" dur="10000.5" fill="forwards" to="0 360 0" repeat="indefinite" easing="linear">
       </a-animation>
     </a-entity>
@@ -65,7 +67,7 @@
     <a-entity n-spawner='res: interactables/soccerball' position="-14 1 -2"></a-entity>
     <a-entity n-spawner='res: interactables/bowling-pin' position="-14 1 -4"></a-entity>
     <!--sphere-->
-    <a-entity mixin="sphere" material="src: url(images/uezJGWW.jpg); side: double;" scale="2.2 2.2 2.2" position="0 20 -23">
+    <a-entity mixin="optimizedSphere" material="src: url(images/uezJGWW.jpg); side: double;" scale="2.2 2.2 2.2" position="0 20 -23">
       <a-animation attribute="rotation" dur="12000" fill="forwards" to="0 360 0" repeat="indefinite" easing="linear"></a-animation>
     </a-entity>
     <!--ring-->
@@ -85,9 +87,9 @@
     <a-image src="images/IzuO7Ny.jpg" hight="1" width="1" position="0 1.50 -10" side="front"></a-image>
     <a-image src="images/IzuO7Ny.jpg" hight="1" width="1" position="23 1 -12" side="front"></a-image>
     <!--image sphere-->
-    <a-entity mixin="sphere" material="src: url(images/d3Qgx8f.jpg); side: back;" scale="10 10 10" position="50 0.10 25"></a-entity>
+    <a-entity mixin="optimizedSphere" material="src: url(images/d3Qgx8f.jpg); side: back;" scale="10 10 10" position="50 0.10 25"></a-entity>
     <!--watchtower-->
-    <a-entity mixin="sphere" material="src: url(images/GDUulsH.jpg); side: front; color: rgb(50, 50, 130);" scale="5 5 5" position="0 26 16" altspace-cursor-collider="enabled: false"></a-entity>
+    <a-entity mixin="optimizedSphere" material="src: url(images/GDUulsH.jpg); side: front; color: rgb(50, 50, 130);" scale="5 5 5" position="0 26 16" altspace-cursor-collider="enabled: false"></a-entity>
     <!--watch lift-->
     <a-box src="images/a4cAIhj.jpg" rotation="-90 0 0" width="2" height="2" depth="0.1" position="0 0 11.40" n-mesh-collider="enabled: true; type: environment">
       <a-animation attribute="position" direction='alternate' from='0 0 11.40' to='0 25 11.40' ease-in-out='linear' dur='12000' repeat='indefinite' />
@@ -99,18 +101,18 @@
       <a-animation attribute="rotation" dur="15000" fill="forwards" to="0 360 0" repeat="indefinite" easing="linear"></a-animation>
     </a-octahedron>
     <!--picture cyliner-->
-    <a-cylinder src="images/SWkgWtA.jpg" side="double" height="8" radius="10" position="50 2 -25" altspace-cursor-collider="enabled: false"></a-cylinder>
+    <a-entity mixin="optimizedCylinder" material="src: url(images/SWkgWtA.jpg); side: double;" scale="10.3 8 10.3" position="50 2 -25" altspace-cursor-collider="enabled: false"></a-entity>
     <!--pictureground-->
-    <a-circle src="images/GDUulsH.jpg" color="rgb(50, 50, 130)" side="double" radius="10" position="50 -1.50 -25" rotation="-90 0 0" altspace-cursor-collider="enabled: false"></a-circle>
+    <a-entity mixin="optimizedCircle" material="src: url(images/GDUulsH.jpg); color: rgb(50, 50, 130);" scale="10.3 10.3 10.3" position="50 -1.50 -25" rotation="-90 0 0" altspace-cursor-collider="enabled: false"></a-entity>
     <!--purple watchtower-->
-    <a-entity mixin="sphere" material="src: url(images/GDUulsH.jpg); side: front; color: rgb(70, 50, 130);" scale="7 7 7" position="25 50 -32" altspace-cursor-collider="enabled: false"></a-entity>
+    <a-entity mixin="optimizedSphere" material="src: url(images/GDUulsH.jpg); side: front; color: rgb(70, 50, 130);" scale="7 7 7" position="25 50 -32" altspace-cursor-collider="enabled: false"></a-entity>
     <a-box src="images/GDUulsH.jpg" color="rgb(70, 50, 130)" depth="0.1" width="5" height="5" position="25 49 -32" rotation="-90 0 0" n-mesh-collider="enabled: true; type: environment"></a-box>
     <!--purple watchtower-->
     <a-box src="images/a4cAIhj.jpg" rotation="-90 0 0" width="2" height="2" depth="0.1" position="25 19 -28.50" n-mesh-collider="enabled: true; type: environment">
       <a-animation attribute="position" direction='alternate' from='25 20 -28.50' to='25 49 -28.50' ease-in-out='linear' dur='13000' repeat='indefinite' />
     </a-box>
     <!--white watchtower-->
-    <a-entity mixin="sphere" material="src: url(images/GDUulsH.jpg); side: front;" scale="7 7 7" position="-60 26 0" altspace-cursor-collider="enabled: false"></a-entity>
+    <a-entity mixin="optimizedSphere" material="src: url(images/GDUulsH.jpg); side: front;" scale="7 7 7" position="-60 26 0" altspace-cursor-collider="enabled: false"></a-entity>
     <a-box src="images/GDUulsH.jpg" depth="0.1" width="5" height="5" position="-60 25 0" rotation="-90 0 0" n-mesh-collider="enabled: true; type: environment"></a-box>
     <!--white watch tower-->
     <a-box src="images/a4cAIhj.jpg" rotation="-90 0 0" width="2" height="2" depth="0.1" position="-60 -1.50 3.50" n-mesh-collider="enabled: true; type: environment">
