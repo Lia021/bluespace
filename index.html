@@ -9,17 +9,17 @@
   <script src="https://cdn.rawgit.com/AltspaceVR/aframe-altspace-component/v1.3.1/dist/aframe-altspace-component.min.js"></script>
   <script>
     altspace.getThreeJSTrackingSkeleton().then(function (skeleton) {
-      window.head = skeleton.getJoint('Head');
-    });
-    AFRAME.registerComponent('altspace-look-at', {
-      init: function () {
-        if (!window.altspace || !altspace.inClient) { return; }
-      },
-      tick: function () {
-        if (!window.head || !this.el.object3D) { return; }
-        this.el.object3D.lookAt(window.head.position); 
-      }
-    })
+          window.head = skeleton.getJoint('Head');
+        });
+        AFRAME.registerComponent('altspace-look-at', {
+          init: function () {
+            if (!window.altspace || !altspace.inClient) { return; }
+          },
+          tick: function () {
+            if (!window.head || !this.el.object3D) { return; }
+            this.el.object3D.lookAt(window.head.position); 
+          }
+        })
   </script>
 </head>
 
@@ -80,86 +80,82 @@
     </a-box>
     <!--sign-->
     <a-image src="http://i.imgur.com/IzuO7Ny.jpg" hight="1" width="1" position="0 1.50 -10" side="front"></a-image>
-      <a-image src="http://i.imgur.com/IzuO7Ny.jpg" hight="1" width="1" position="23 1 -12" side="front"></a-image>
-        <!--image sphere-->
-        <a-sphere src="http://i.imgur.com/d3Qgx8f.jpg" radius="10" side="back" position="45 0.10 5"></a-sphere>
-        <!--watchtower-->
-        <a-sphere src="http://i.imgur.com/H4sYxIo.jpg" radius="5" side="front" position="0 26 16" altspace-cursor-collider="enabled: false"></a-sphere>
-        <!--watch lift-->
-        <a-box src="http://i.imgur.com/a4cAIhj.jpg" rotation="-90 0 0" width="2" height="2" depth="0.1" position="0 0 11.40" n-mesh-collider="enabled: true; type: environment">
-          <a-animation attribute="position" direction='alternate' from='0 0 11.40' to='0 25 11.40' ease-in-out='linear' dur='12000' repeat='indefinite' />
-        </a-box>
-        <!--watchtower ground-->
-        <a-box src="http://i.imgur.com/H4sYxIo.jpg" depth="0.1" width="7" height="7" position="0 25 16" rotation="-90 0 0" n-mesh-collider="enabled: true; type: environment"></a-box>
-        <!--dico dimond-->
-        <a-octahedron src="http://i.imgur.com/G0BAeaV.jpg" radius="5" position="24 30 -20">
-          <a-animation attribute="rotation" dur="15000" fill="forwards" to="0 360 0" repeat="indefinite" easing="linear"></a-animation>
-        </a-octahedron>
-        <!--picture cyliner-->
-        <a-cylinder src="http://i.imgur.com/SWkgWtA.jpg" side="double" height="8" radius="10" position="50 2 -25" altspace-cursor-collider="enabled: false"></a-cylinder>
-        <!--pictureground-->
-        <a-circle src="http://i.imgur.com/H4sYxIo.jpg" side="double" radius="10" position="50 -1.50 -25" rotation="-90 0 0" altspace-cursor-collider="enabled: false"></a-circle>
-        <!--purple watchtower-->
-        <a-sphere src="http://i.imgur.com/KT5wWA5.jpg" radius="7" side="front" position="25 50 -32" altspace-cursor-collider="enabled: false"></a-sphere>
-        <a-box src="http://i.imgur.com/KT5wWA5.jpg" depth="0.1" width="5" height="5" position="25 49 -32" rotation="-90 0 0" n-mesh-collider="enabled: true; type: environment"></a-box>
-        <!--purple watchtower-->
-        <a-box src="http://i.imgur.com/a4cAIhj.jpg" rotation="-90 0 0" width="2" height="2" depth="0.1" position="25 19 -28.50" n-mesh-collider="enabled: true; type: environment">
-          <a-animation attribute="position" direction='alternate' from='25 20 -28.50' to='25 49 -28.50' ease-in-out='linear' dur='13000' repeat='indefinite' />
-        </a-box>
-        <!--white watchtower-->
-        <a-sphere src="http://i.imgur.com/GDUulsH.jpg" radius="7" side="front" position="-60 26 0" altspace-cursor-collider="enabled: false"></a-sphere>
-        <a-box src="http://i.imgur.com/GDUulsH.jpg" depth="0.1" width="5" height="5" position="-60 25 0" rotation="-90 0 0" n-mesh-collider="enabled: true; type: environment"></a-box>
-        <!--white watch tower-->
-        <a-box src="http://i.imgur.com/a4cAIhj.jpg" rotation="-90 0 0" width="2" height="2" depth="0.1" position="-60 -1.50 3.50" n-mesh-collider="enabled: true; type: environment">
-          <a-animation attribute="position" direction='alternate' from='-60 -1.50 3.50' to='-60 25 3.50' ease-in-out='linear' dur='12000' repeat='indefinite' />
-        </a-box>
-        <!--photo of altspace-->
-        <a-image src="http://i.imgur.com/2rJJo1L.jpg" height="2" width="2" position="50 5 -34.65" side="front"></a-image>
-        <a-image src="http://i.imgur.com/XV6zhrh.jpg" height="2" width="2" position="50 2.50 -34.65" side="front"></a-image>
-        <a-image src="http://i.imgur.com/u3oCsGP.jpg" height="2" width="2" position="50 0 -34.65" side="front"></a-image>
-        <a-image src="http://i.imgur.com/HjueoEI.jpg" height="2" width="2" position="50 5 -15.30" side="double"></a-image>
-        <a-image src="http://i.imgur.com/Hukt24D.jpg" height="2" width="2" position="50 2.50 -15.30" side="double"></a-image>
-        <a-image src="http://i.imgur.com/B2rWkfS.jpg" height="2" width="2" position="50 0 -15.30" side="double"></a-image>
-        <a-image src="http://i.imgur.com/0jKK5mo.jpg" height="2" width="2" position="40.15 5 -25" side="front" rotation="0 90 0"></a-image>
-        <a-image src="http://i.imgur.com/0ZPW8gf.jpg" height="2" width="2" position="40.15 2.50 -25" side="front" rotation="0 90 0"></a-image>
-        <a-image src="http://i.imgur.com/J0NcVPr.jpg.jpg" height="2" width="2" position="40.15 0 -25" side="front" rotation="0 90 0"></a-image>
-        <a-image src="http://i.imgur.com/MRUe8eT.jpg" height="2" width="2" position="59.60 5 -25" side="back" rotation="0 90 0"></a-image>
-        <a-image src="http://i.imgur.com/e2h8mIk.jpg" height="2" width="2" position="59.60 2.50 -25" side="back" rotation="0 90 0"></a-image>
-        <a-image src="http://i.imgur.com/7RwnJaX.jpg" height="2" width="2" position="59.60 0 -25" side="back" rotation="0 90 0"></a-image>
-        <a-image src="http://i.imgur.com/556kMz7.jpg" height="2" width="2" position="41.50 5 -30" side="double" rotation="0 60 0"></a-image>
-        <a-image src="http://i.imgur.com/TdbtVS3.jpg" height="2" width="2" position="41.50 2.50 -30" side="double" rotation="0 60 0"></a-image>
-        <a-image src="http://i.imgur.com/GuLSwSf.jpg" height="2" width="2" position="41.50 0 -30" side="double" rotation="0 60 0"></a-image>
-        <a-image src="http://i.imgur.com/pJjtJeT.jpg" height="2" width="2" position="58.50 5 -30" side="double" rotation="0 -60 0"></a-image>
-        <a-image src="http://i.imgur.com/KdR07li.jpg" height="2" width="2" position="58.50 2.50 -30" side="double" rotation="0 -60 0"></a-image>
-        <a-image src="http://i.imgur.com/Og6KDgZ.jpg" height="2" width="2" position="58.50 0 -30" side="double" rotation="0 -60 0"></a-image>
-        <a-image src="http://i.imgur.com/t9o83Gx.jpg" height="2" width="2" position="41.53 5 -20" side="back" rotation="0 -60 0"></a-image>
-        <a-image src="http://i.imgur.com/cjfskyF.jpg" height="2" width="2" position="41.53 2.50 -20" side="back" rotation="0 -60 0"></a-image>
-        <a-image src="http://i.imgur.com/3r5hHZA.jpg" height="2" width="2" position="41.53 0 -20" side="back" rotation="0 -60 0"></a-image>
-        <a-image src="http://i.imgur.com/IBJ8xcY.jpg" height="2" width="2" position="58.50 5 -20" side="double" rotation="0 60 0"></a-image>
-        <a-image src="http://i.imgur.com/FFYVDqw.jpg" height="2" width="2" position="58.50 2.50 -20" side="double" rotation="0 60 0"></a-image>
-        <a-image src="http://i.imgur.com/udIhAdg.jpg" height="2" width="2" position="58.50 0 -20" side="double" rotation="0 60 0"></a-image>
-        <!--group photo sphere-->
-        <a-box src="http://i.imgur.com/q52THsL.jpg" width="5" height="5" depth="0.1" position="50 2 -25">
-          <a-animation attribute="rotation" dur="10000.5" fill="forwards" to="0 360 0" repeat="indefinite" easing="linear">
-          </a-animation>
-        </a-box>
-        <!--model-->
-        <a-assets>
-          <a-asset-item id="eyeball" src="https://rawgit.com/Lia021/eyeball/master/eyeball.dae"></a-asset-item>
-        </a-assets>
-        <a-entity position="0 7 0" altspace-look-at>
-          <a-entity position="0 -1 -1" rotation="0 -90 0"scale="2 2 2" collada-model="#eyeball"></a-entity>
-        </a-entity>
-        
-
-
-
-
-
-
-
-
-
-</body>
-
-</html>
+    <a-image src="http://i.imgur.com/IzuO7Ny.jpg" hight="1" width="1" position="23 1 -12" side="front"></a-image>
+    <!--image sphere-->
+    <a-sphere src="http://i.imgur.com/d3Qgx8f.jpg" radius="10" side="back" position="50 0.10 25"></a-sphere>
+    <!--watchtower-->
+    <a-sphere src="http://i.imgur.com/H4sYxIo.jpg" radius="5" side="front" position="0 26 16" altspace-cursor-collider="enabled: false"></a-sphere>
+    <!--watch lift-->
+    <a-box src="http://i.imgur.com/a4cAIhj.jpg" rotation="-90 0 0" width="2" height="2" depth="0.1" position="0 0 11.40" n-mesh-collider="enabled: true; type: environment">
+      <a-animation attribute="position" direction='alternate' from='0 0 11.40' to='0 25 11.40' ease-in-out='linear' dur='12000' repeat='indefinite' />
+    </a-box>
+    <!--watchtower ground-->
+    <a-box src="http://i.imgur.com/H4sYxIo.jpg" depth="0.1" width="7" height="7" position="0 25 16" rotation="-90 0 0" n-mesh-collider="enabled: true; type: environment"></a-box>
+    <!--dico dimond-->
+    <a-octahedron src="http://i.imgur.com/G0BAeaV.jpg" radius="5" position="24 30 -20">
+      <a-animation attribute="rotation" dur="15000" fill="forwards" to="0 360 0" repeat="indefinite" easing="linear"></a-animation>
+    </a-octahedron>
+    <!--picture cyliner-->
+    <a-cylinder src="http://i.imgur.com/SWkgWtA.jpg" side="double" height="8" radius="10" position="50 2 -25" altspace-cursor-collider="enabled: false"></a-cylinder>
+    <!--pictureground-->
+    <a-circle src="http://i.imgur.com/H4sYxIo.jpg" side="double" radius="10" position="50 -1.50 -25" rotation="-90 0 0" altspace-cursor-collider="enabled: false"></a-circle>
+    <!--purple watchtower-->
+    <a-sphere src="http://i.imgur.com/KT5wWA5.jpg" radius="7" side="front" position="25 50 -32" altspace-cursor-collider="enabled: false"></a-sphere>
+    <a-box src="http://i.imgur.com/KT5wWA5.jpg" depth="0.1" width="5" height="5" position="25 49 -32" rotation="-90 0 0" n-mesh-collider="enabled: true; type: environment"></a-box>
+    <!--purple watchtower-->
+    <a-box src="http://i.imgur.com/a4cAIhj.jpg" rotation="-90 0 0" width="2" height="2" depth="0.1" position="25 19 -28.50" n-mesh-collider="enabled: true; type: environment">
+      <a-animation attribute="position" direction='alternate' from='25 20 -28.50' to='25 49 -28.50' ease-in-out='linear' dur='13000' repeat='indefinite' />
+    </a-box>
+    <!--white watchtower-->
+    <a-sphere src="http://i.imgur.com/GDUulsH.jpg" radius="7" side="front" position="-60 26 0" altspace-cursor-collider="enabled: false"></a-sphere>
+    <a-box src="http://i.imgur.com/GDUulsH.jpg" depth="0.1" width="5" height="5" position="-60 25 0" rotation="-90 0 0" n-mesh-collider="enabled: true; type: environment"></a-box>
+    <!--white watch tower-->
+    <a-box src="http://i.imgur.com/a4cAIhj.jpg" rotation="-90 0 0" width="2" height="2" depth="0.1" position="-60 -1.50 3.50" n-mesh-collider="enabled: true; type: environment">
+      <a-animation attribute="position" direction='alternate' from='-60 -1.50 3.50' to='-60 25 3.50' ease-in-out='linear' dur='12000' repeat='indefinite' />
+    </a-box>
+    <!--photo of altspace-->
+    <a-image src="http://i.imgur.com/2rJJo1L.jpg" height="2" width="2" position="50 5 -34.65" side="front"></a-image>
+    <a-image src="http://i.imgur.com/XV6zhrh.jpg" height="2" width="2" position="50 2.50 -34.65" side="front"></a-image>
+    <a-image src="http://i.imgur.com/u3oCsGP.jpg" height="2" width="2" position="50 0 -34.65" side="front"></a-image>
+    <a-image src="http://i.imgur.com/HjueoEI.jpg" height="2" width="2" position="50 5 -15.30" side="double"></a-image>
+    <a-image src="http://i.imgur.com/Hukt24D.jpg" height="2" width="2" position="50 2.50 -15.30" side="double"></a-image>
+    <a-image src="http://i.imgur.com/B2rWkfS.jpg" height="2" width="2" position="50 0 -15.30" side="double"></a-image>
+    <a-image src="http://i.imgur.com/0jKK5mo.jpg" height="2" width="2" position="40.15 5 -25" side="front" rotation="0 90 0"></a-image>
+    <a-image src="http://i.imgur.com/0ZPW8gf.jpg" height="2" width="2" position="40.15 2.50 -25" side="front" rotation="0 90 0"></a-image>
+    <a-image src="http://i.imgur.com/J0NcVPr.jpg.jpg" height="2" width="2" position="40.15 0 -25" side="front" rotation="0 90 0"></a-image>
+    <a-image src="http://i.imgur.com/MRUe8eT.jpg" height="2" width="2" position="59.60 5 -25" side="back" rotation="0 90 0"></a-image>
+    <a-image src="http://i.imgur.com/e2h8mIk.jpg" height="2" width="2" position="59.60 2.50 -25" side="back" rotation="0 90 0"></a-image>
+    <a-image src="http://i.imgur.com/7RwnJaX.jpg" height="2" width="2" position="59.60 0 -25" side="back" rotation="0 90 0"></a-image>
+    <a-image src="http://i.imgur.com/556kMz7.jpg" height="2" width="2" position="41.50 5 -30" side="double" rotation="0 60 0"></a-image>
+    <a-image src="http://i.imgur.com/TdbtVS3.jpg" height="2" width="2" position="41.50 2.50 -30" side="double" rotation="0 60 0"></a-image>
+    <a-image src="http://i.imgur.com/GuLSwSf.jpg" height="2" width="2" position="41.50 0 -30" side="double" rotation="0 60 0"></a-image>
+    <a-image src="http://i.imgur.com/pJjtJeT.jpg" height="2" width="2" position="58.50 5 -30" side="double" rotation="0 -60 0"></a-image>
+    <a-image src="http://i.imgur.com/KdR07li.jpg" height="2" width="2" position="58.50 2.50 -30" side="double" rotation="0 -60 0"></a-image>
+    <a-image src="http://i.imgur.com/Og6KDgZ.jpg" height="2" width="2" position="58.50 0 -30" side="double" rotation="0 -60 0"></a-image>
+    <a-image src="http://i.imgur.com/t9o83Gx.jpg" height="2" width="2" position="41.53 5 -20" side="back" rotation="0 -60 0"></a-image>
+    <a-image src="http://i.imgur.com/cjfskyF.jpg" height="2" width="2" position="41.53 2.50 -20" side="back" rotation="0 -60 0"></a-image>
+    <a-image src="http://i.imgur.com/3r5hHZA.jpg" height="2" width="2" position="41.53 0 -20" side="back" rotation="0 -60 0"></a-image>
+    <a-image src="http://i.imgur.com/IBJ8xcY.jpg" height="2" width="2" position="58.50 5 -20" side="double" rotation="0 60 0"></a-image>
+    <a-image src="http://i.imgur.com/FFYVDqw.jpg" height="2" width="2" position="58.50 2.50 -20" side="double" rotation="0 60 0"></a-image>
+    <a-image src="http://i.imgur.com/udIhAdg.jpg" height="2" width="2" position="58.50 0 -20" side="double" rotation="0 60 0"></a-image>
+    <a-image src="http://i.imgur.com/4Wopekz.jpg" height="1" width="1" position="-2.95 1.90 0" side="front"rotation="0 90 0"></a-image>
+    <a-image src="http://i.imgur.com/KXr4idZ.jpg" height="1" width="1" position="2.95 1.90 0" side="back"rotation="0 -90 0"></a-image>
+    <!--group photo sphere-->
+    <a-box src="http://i.imgur.com/q52THsL.jpg" width="5" height="5" depth="0.1" position="50 2 -25">
+      <a-animation attribute="rotation" dur="10000.5" fill="forwards" to="0 360 0" repeat="indefinite" easing="linear">
+      </a-animation>
+    </a-box>
+    <!--model-->
+    <a-assets>
+      <a-asset-item id="eyeball" src="https://rawgit.com/Lia021/eyeball/master/eyeball.dae"></a-asset-item>
+    </a-assets>
+    <a-entity position="0 4.5 0" altspace-look-at>
+      <a-entity position="0 -1 -1" rotation="0 -90 0" scale="2 2 2" collada-model="#eyeball"></a-entity>
+    </a-entity>
+    <!--model2-->
+    <a-assets>
+      <a-asset-item id="eyeball2" src="https://rawgit.com/Lia021/highrise/master/models/guest2.dae"></a-asset-item>
+    </a-assets>
+    <a-entity position="9.75 12 -9.50" altspace-look-at>
+      <a-entity position="0 -1 -1" rotation="0 -90 0" scale="2 2 2" collada-model="#eyeball2"></a-entity>
+    </a-entity>
